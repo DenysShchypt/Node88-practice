@@ -9,4 +9,14 @@ const getAllProducts = async (req, res, next) => {
   }
 };
 
-export { getAllProducts };
+const addProduct = async (req, res) => {
+  try {
+    const newProduct = await s.addProduct(req.body);
+
+    res.status(201).json(newProduct);
+  } catch (error) {
+    next(error);
+  }
+};
+
+export { getAllProducts, addProduct };

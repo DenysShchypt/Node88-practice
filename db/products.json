@@ -2,7 +2,13 @@
   {
     "name": "Product Name",
     "price": 22,
-    "id": "111",
+    "_id": "657ed595269a15c6e46da27d",
+    "sale": 0
+  },
+  {
+    "name": "Product Name",
+    "price": 22,
+    "_id": "657ed6012dc8fa21002ec320",
     "sale": 0
   }
 ]

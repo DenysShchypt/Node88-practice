@@ -1,8 +1,13 @@
 import express from "express";
-import { getAllProducts } from "../../controllers/productsControllers.js";
+import {
+  addProduct,
+  getAllProducts,
+} from "../../controllers/productsControllers.js";
+import { validateAddProduct } from "../../middlewares/validate/validateProducts.js";
 
-const route = express.Router();
+const router = express.Router();
 
-route.get("/", getAllProducts);
+router.get("/", getAllProducts);
+router.post("/", validateAddProduct, addProduct);
 
-export default route;
+export default router;
