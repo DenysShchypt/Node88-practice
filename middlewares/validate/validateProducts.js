@@ -1,23 +1,19 @@
-import Joi from "joi";
-import { createError } from "../../helpers/createError.js";
 
-const addProductsSchema = Joi.object({
-  name: Joi.string().required().min(3),
-  price: Joi.number().required().min(1),
-});
+import  {createError}  from "../../helpers/index.js";
 
-export const validateAddProduct = async (req, res, next) => {
-  try {
-    const product = req.body;
-
-    const { error } = addProductsSchema.validate(product);
-
+const validateProducts = schema => {
+   // Створюємо функцію обгортку
+const fun = async (req,res,next)=>{
+  // Достаємо error з req.body
+    const { error } = schema.validate(req.body);
+     // Перевіряємо на помилку
     if (error) {
-      throw createError(400, error.message);
+      // Шукати далі  Middleware обробник помилок 
+      return next(createError(400, error.message));
     }
-
     next();
-  } catch (error) {
-    next(error);
   }
+  return fun
 };
+
+export default validateProducts;

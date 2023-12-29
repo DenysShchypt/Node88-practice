@@ -10,5 +10,17 @@
     "price": 22,
     "_id": "657ed6012dc8fa21002ec320",
     "sale": 0
+  },
+  {
+    "_id": "658ef9c5844bd9399ef8138b",
+    "name": "Orange",
+    "price": 30,
+    "sale": 0
+  },
+  {
+    "name": "Bread",
+    "price": 30,
+    "_id": "658f0375eb3121605481c1a2",
+    "sale": 0
   }
 ]

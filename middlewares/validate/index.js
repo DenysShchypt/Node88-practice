@@ -1,0 +1,1 @@
+export {default as validateProducts} from "./validateProducts.js"
