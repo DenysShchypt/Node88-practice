@@ -1,6 +1,6 @@
 import { Schema, model } from "mongoose";
 import Joi from "joi";
-import { handleMongoos } from "../../helpers/index.js";
+import { handleMongoos } from "../helpers/index.js";
 // const saleRange = [5, 10, 15, 20, 25, 30, 35, 40, 45, 50]
 const schemaProducts = new Schema({
     name: {

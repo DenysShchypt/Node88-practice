@@ -1,4 +1,4 @@
-import { Product } from "../models/productSchema.js";
+import { Product } from "../../models/productSchema.js";
 import { createError } from "../../helpers/index.js";
 
 const getByIdProduct = async (req, res) => {
