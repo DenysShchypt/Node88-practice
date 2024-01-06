@@ -24,6 +24,7 @@ schemaProducts.post('save', handleMongoos);
 const addProductsSchema = Joi.object({
     name: Joi.string().required().min(3),
     price: Joi.number().required().min(1),
+    sale: Joi.number().min(0).max(50)
 });
 
 const updateProductsSchema = Joi.object({

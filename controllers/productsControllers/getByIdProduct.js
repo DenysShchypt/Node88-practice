@@ -3,7 +3,7 @@ import { createError } from "../../helpers/index.js";
 
 const getByIdProduct = async (req, res) => {
   const { id: _id } = req.params;
-  const result = await Product.findOneById(id);
+  const result = await Product.findById(_id);
   if (!result) {
     throw createError(404, `Product with ${id} not found`);
   }
