@@ -1,7 +1,7 @@
-import { addNewProduct } from "../../services/productsServices.js";
+import { Product } from "../models/productSchema.js";
 
 const addProduct = async (req, res) => {
-  const newProduct = await addNewProduct(req.body);
+  const newProduct = Product.create(...req.body);
   res.status(201).json(newProduct);
 };
 
