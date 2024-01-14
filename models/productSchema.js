@@ -1,7 +1,6 @@
 import { Schema, model } from "mongoose";
 import Joi from "joi";
 import { handleMongoos } from "../helpers/index.js";
-// const saleRange = [5, 10, 15, 20, 25, 30, 35, 40, 45, 50]
 const schemaProducts = new Schema({
     name: {
         type: String,
@@ -13,7 +12,6 @@ const schemaProducts = new Schema({
     },
     sale: {
         type: Number,
-        // enum: saleRange,
         default: 0
     }
 },// Дата створення і дата оновлення
@@ -23,15 +21,16 @@ schemaProducts.post('save', handleMongoos);
 
 const addProductsSchema = Joi.object({
     name: Joi.string().required().min(3),
-    price: Joi.number().required().min(1),
-    sale: Joi.number().min(0).max(50)
+    price: Joi.number().required().min(1)
 });
 
 const updateProductsSchema = Joi.object({
     name: Joi.string().min(3),
-    price: Joi.number().min(1),
-    sale: Joi.number().min(0).max(50)
+    price: Joi.number().min(1)
+});
+const updateSaleSchema = Joi.object({
+    sale: Joi.number().min(0).max(100).required()
 });
 const Product = model('product', schemaProducts);
 
-export { Product,updateProductsSchema,addProductsSchema }
+export { Product,updateProductsSchema,addProductsSchema,updateSaleSchema }

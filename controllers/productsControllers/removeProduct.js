@@ -1,5 +1,5 @@
 import { createError } from "../../helpers/index.js";
-import { Product } from "../models/productSchema.js";
+import { Product } from "../../models/productSchema.js";
 
 const removeProduct = async (req, res) => {
   const { id: _id } = req.params;

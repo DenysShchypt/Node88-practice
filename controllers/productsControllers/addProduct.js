@@ -1,4 +1,4 @@
-import { Product } from "../models/productSchema.js";
+import { Product } from "../../models/productSchema.js";
 
 const addProduct = async (req, res) => {
   const newProduct = await Product.create({...req.body});
