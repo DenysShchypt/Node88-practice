@@ -7,7 +7,7 @@ mongoose
   .then(() =>
     app.listen(PORT, () => {
       console.log("Server is open");
-    }),
+    })
   )
   .catch((error) => {
     console.log(error.message);

@@ -8,7 +8,7 @@ import { addUserSchema } from "../../models/userSchema.js";
 const router = express.Router();
 
 router.post(
-  "/singup",
+  "/signup",
   validateBody(addUserSchema),
   ctrlWrapper(authControllers.addUser)
 );

@@ -1,7 +1,10 @@
 import { createError } from "../../helpers/index.js";
 import { User } from "../../models/userSchema.js";
-
+import { nanoid } from "nanoid";
 import bcrypt from "bcrypt";
+import { sendMail } from "../../helpers/sendMail.js";
+
+const { BASE_URL } = process.env;
 
 const addUser = async (req, res) => {
   const { password, email } = req.body;
@@ -13,8 +16,20 @@ const addUser = async (req, res) => {
   }
 
   const hashPassword = await bcrypt.hash(password, 10);
+  const verificationToken = nanoid();
+  const result = await User.create({
+    ...req.body,
+    password: hashPassword,
+    verificationToken,
+  });
 
-  const result = await User.create({ ...req.body, password: hashPassword });
+  const verifyEmail = {
+    to: email,
+    subject: "verify email",
+    html: `<a target = "_blank" href = "${BASE_URL}/api/users/verify/${verificationToken}">Click for verify email</a>`,
+  };
+
+  await sendMail(verifyEmail);
 
   res.status(201).json({
     _id: result._id,
