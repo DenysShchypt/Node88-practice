@@ -32,13 +32,13 @@ router.post("/", upload.single("productPhoto"),
 router.put(
     "/:id",
     isValidId,
-    validateProducts(updateProductsSchema),
+    validateBody(updateProductsSchema),
     ctrlWrapper(updateProduct)
 );
 router.patch(
     "/:id",
     isValidId,
-    validateProducts(updateSaleSchema),
+    validateBody(updateSaleSchema),
     ctrlWrapper(updateSale)
 );
 // Видалення товару
