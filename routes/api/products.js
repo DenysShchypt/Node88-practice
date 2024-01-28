@@ -1,6 +1,7 @@
 import express from "express";
 import {
     isValidId,
+    upload,
     validateProducts,
 } from "../../middlewares/validate/index.js";
 import { ctrlWrapper } from "../../decorators/index.js";
@@ -24,7 +25,9 @@ router.get("/", ctrlWrapper(getAllProducts));
 // Запит товару за ID
 router.get("/:id", isValidId, ctrlWrapper(getByIdProduct));
 // додавання товару
-router.post("/", validateProducts(addProductsSchema), ctrlWrapper(addProduct));
+router.post("/", upload.single("productPhoto"),
+    validateProducts(addProductsSchema),
+    ctrlWrapper(addProduct));
 // Pедагування товару
 router.put(
     "/:id",
