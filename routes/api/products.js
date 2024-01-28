@@ -2,6 +2,7 @@ import express from "express";
 import {
     isValidId,
     upload,
+    validateBody,
     validateProducts,
 } from "../../middlewares/validate/index.js";
 import { ctrlWrapper } from "../../decorators/index.js";
