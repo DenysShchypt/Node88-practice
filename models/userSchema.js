@@ -43,6 +43,11 @@ export const addUserSchema = Joi.object({
   password: Joi.string().required(),
 });
 
+export const loginUserSchema = Joi.object({
+  email: Joi.string().required().pattern(emailRegExp),
+  password: Joi.string().required(),
+});
+
 userSchema.post("save", handleMongoos);
 
 export const User = model("user", userSchema);
