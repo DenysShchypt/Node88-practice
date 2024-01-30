@@ -1,8 +1,7 @@
-import { createError } from "../../helpers/index.js";
+import { createError, sendMail } from "../../helpers/index.js";
 import { User } from "../../models/userSchema.js";
 import { nanoid } from "nanoid";
 import bcrypt from "bcrypt";
-import { sendMail } from "../../helpers/sendMail.js";
 
 const { BASE_URL } = process.env;
 
@@ -26,7 +25,7 @@ const addUser = async (req, res) => {
   const verifyEmail = {
     to: email,
     subject: "verify email",
-    html: `<a target = "_blank" href = "${BASE_URL}/api/users/verify/${verificationToken}">Click for verify email</a>`,
+    html: `<a target = "_blank" href = "${BASE_URL}/api/auth/verify/${verificationToken}">Click for verify email</a>`,
   };
 
   await sendMail(verifyEmail);

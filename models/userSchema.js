@@ -48,6 +48,10 @@ export const loginUserSchema = Joi.object({
   password: Joi.string().required(),
 });
 
+export const forgotPasswordSchema = Joi.object({
+  email: Joi.string().required().pattern(emailRegExp),
+});
+
 userSchema.post("save", handleMongoos);
 
 export const User = model("user", userSchema);

@@ -14,7 +14,9 @@ const nodemailerConfig = {
 };
 const transport = nodemailer.createTransport(nodemailerConfig);
 
-export const sendMail = (data) => {
+const sendMail = (data) => {
   const email = { ...data, from: UKR_NET_FROM };
   return transport.sendMail(email);
 };
+
+export default sendMail;
